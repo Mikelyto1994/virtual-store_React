@@ -1,30 +1,26 @@
-import PropTypes from 'prop-types';
-import styles from "../views/Details.module.css";
+import styles from "./Description.module.css"
 
-export default function Description({ title, description, colorOptions }) {
-  return (
-    <div className={styles["product-description-block"]}>
-      <h1 className={styles["product-title"]}>{title}</h1>
-      <form className={styles["product-selector"]}>
-        <fieldset className={styles["product-fieldset"]}>
-          <label className={styles["product-label"]} htmlFor="color">Color</label>
-          <select className={styles["product-select"]} id="color">
-            {colorOptions.map((color, index) => (
-              <option key={index} value={color}>{color}</option>
-            ))}
-          </select>
-        </fieldset>
-      </form>
-      <div className={styles["product-description"]}>
-        <span className={styles["product-label"]}>Descripción</span>
-        <p>{description}</p>
-      </div>
+export default function Description({ product }) {
+    return <section className={styles["product-description-block"]}>
+    <h1 className={styles["product-title"]}>{product.title}</h1>
+    <form className={styles["product-selector"]}>
+      <fieldset className={styles["product-fieldset"]}>
+        <label className={styles["product-label"]} htmlFor="color">
+          Color
+        </label>
+        <select className={styles["product-select"]} id="color">
+          {product.colors.map((each) => (
+            <option key={each} value="Silver">
+              {each}
+            </option>
+          ))}
+        </select>
+      </fieldset>
+    </form>
+    <div className={styles["product-description"]}>
+      <span className={styles["product-label"]}>Descripción</span>
+      <p>{product.description}</p>
     </div>
-  );
-}
-
-Description.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  colorOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
+  </section>
+  }
+  

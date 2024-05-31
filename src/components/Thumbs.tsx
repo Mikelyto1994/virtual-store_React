@@ -1,30 +1,24 @@
-import PropTypes from 'prop-types';
-import styles from "../views/Details.module.css";
+import styles from "./Thumbs.module.css";
 
-export default function Thumbs({ images, title }) {
+export default function Thumbs({ product }) {
   return (
     <section className={styles["product-images-block"]}>
       <div className={styles["product-images"]}>
-        {images.map((image, index) => (
+        {product.images.map((each) => (
           <img
-            key={index}
             className={styles["mini-img"]}
-            src={image}
-            alt={`${title} thumbnail ${index + 1}`}
+            key={each}
+            src={each}
+            alt={product.title}
           />
         ))}
       </div>
       <img
         className={styles["big-img"]}
         id="big-img"
-        src={images[0]}
-        alt={`${title} main image`}
+        src={product.images[0]}
+        alt={product.title}
       />
     </section>
   );
 }
-
-Thumbs.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.string).isRequired,
-  title: PropTypes.string.isRequired,
-};
